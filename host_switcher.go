@@ -12,6 +12,7 @@
 // License for the specific language governing permissions and limitations
 // under the License.
 
+// Package switcher provides host switch functionality for Macaron.
 package switcher
 
 import (
@@ -73,17 +74,23 @@ func (hs *HostSwitcher) RunOnAddr(addr string) {
 		infos := strings.Split(addr, ":")
 		port := com.StrTo(infos[1]).MustInt()
 		for _, host := range hs.list[:len(hs.list)-1] {
-			go hs.switches[host].RunOnAddr(infos[0] + ":" + com.ToStr(port))
+			go hs.switches[host].Run(infos[0], port)
 			port++
 		}
-		hs.switches[hs.list[len(hs.list)-1]].RunOnAddr(infos[0] + ":" + com.ToStr(port))
+		hs.switches[hs.list[len(hs.list)-1]].Run(infos[0], port)
 		return
 	}
 
 	log.Fatalln(http.ListenAndServe(addr, hs))
 }
 
+// GetDefaultListenAddr returns default server listen address of Macaron.
+func GetDefaultListenAddr() string {
+	host, port := macaron.GetDefaultListenInfo()
+	return host + ":" + com.ToStr(port)
+}
+
 // Run the http server. Listening on os.GetEnv("PORT") or 4000 by default.
 func (hs *HostSwitcher) Run() {
-	hs.RunOnAddr(macaron.GetDefaultListenAddr())
+	hs.RunOnAddr(GetDefaultListenAddr())
 }
