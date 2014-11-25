@@ -1,7 +1,7 @@
-switcher
+switcher [![Build Status](https://drone.io/github.com/macaron-contrib/switcher/status.png)](https://drone.io/github.com/macaron-contrib/switcher/latest) [![](http://gocover.io/_badge/github.com/macaron-contrib/switcher)](http://gocover.io/github.com/macaron-contrib/switcher)
 ========
 
-Package switcher provides host switch functionality for [Macaron](https://github.com/Unknwon/macaron).
+Module switcher provides host switch functionality for [Macaron](https://github.com/Unknwon/macaron).
 
 [API Reference](https://gowalker.org/github.com/macaron-contrib/switcher)
 

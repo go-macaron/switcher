@@ -12,7 +12,7 @@
 // License for the specific language governing permissions and limitations
 // under the License.
 
-// Package switcher provides host switch functionality for Macaron.
+// Package switcher is a helper module that provides host switch functionality for Macaron.
 package switcher
 
 import (
