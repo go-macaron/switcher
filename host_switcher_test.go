@@ -25,6 +25,10 @@ import (
 )
 
 func Test_HostSwitcher(t *testing.T) {
+	Convey("Empty host name", t, func() {
+		NewHostSwitcher().Set("", nil)
+	})
+
 	Convey("Hosting multiple instances", t, func() {
 		hs := NewHostSwitcher()
 
@@ -85,5 +89,29 @@ func Test_HostSwitcher(t *testing.T) {
 			macaron.Env = macaron.PROD
 			go hs.RunOnAddr(":4010")
 		})
+	})
+
+	Convey("Host prefix match", t, func() {
+		hs := NewHostSwitcher()
+
+		m := macaron.New()
+		m.Get("/", func(ctx *macaron.Context) string {
+			return ctx.Req.Host
+		})
+		hs.Set("*.example.com", m)
+
+		resp := httptest.NewRecorder()
+		req, err := http.NewRequest("GET", "/", nil)
+		So(err, ShouldBeNil)
+		req.Host = "1.example.com"
+		hs.ServeHTTP(resp, req)
+		So(resp.Body.String(), ShouldEqual, "1.example.com")
+
+		resp = httptest.NewRecorder()
+		req, err = http.NewRequest("GET", "/", nil)
+		So(err, ShouldBeNil)
+		req.Host = "2.example.com"
+		hs.ServeHTTP(resp, req)
+		So(resp.Body.String(), ShouldEqual, "2.example.com")
 	})
 }
