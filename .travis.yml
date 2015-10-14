@@ -7,7 +7,7 @@ go:
   - 1.5
   - tip
 
-script: go test -v -cover -race
+script: go test -v -cover
 
 notifications:
   email:
