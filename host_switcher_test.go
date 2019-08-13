@@ -18,7 +18,6 @@ import (
 	"net/http"
 	"net/http/httptest"
 	"testing"
-	"time"
 
 	. "github.com/smartystreets/goconvey/convey"
 	"gopkg.in/macaron.v1"
@@ -85,7 +84,7 @@ func Test_HostSwitcher(t *testing.T) {
 		Convey("Just test that Run() doesn't bomb", func() {
 			go hs.RunOnAddr(":4003")
 			go hs.Run()
-			time.Sleep(1 * time.Second)
+			// FIXME: make no data race
 			macaron.Env = macaron.PROD
 			go hs.RunOnAddr(":4010")
 		})
