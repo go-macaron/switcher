@@ -18,9 +18,9 @@ package switcher
 import (
 	"log"
 	"net/http"
+	"strconv"
 	"strings"
 
-	"github.com/Unknwon/com"
 	"gopkg.in/macaron.v1"
 )
 
@@ -100,7 +100,7 @@ func (hs *HostSwitcher) ServeHTTP(resp http.ResponseWriter, req *http.Request) {
 func (hs *HostSwitcher) RunOnAddr(addr string) {
 	if macaron.Env == macaron.DEV {
 		infos := strings.Split(addr, ":")
-		port := com.StrTo(infos[1]).MustInt()
+		port, _ := strconv.Atoi(infos[1])
 		for i := range hs.hosts[:len(hs.hosts)-1] {
 			go hs.hosts[i].m.Run(infos[0], port)
 			port++
@@ -115,7 +115,7 @@ func (hs *HostSwitcher) RunOnAddr(addr string) {
 // GetDefaultListenAddr returns default server listen address of Macaron.
 func GetDefaultListenAddr() string {
 	host, port := macaron.GetDefaultListenInfo()
-	return host + ":" + com.ToStr(port)
+	return host + ":" + strconv.Itoa(port)
 }
 
 // Run the http server. Listening on os.GetEnv("PORT") or 4000 by default.
