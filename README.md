@@ -9,7 +9,7 @@ Module switcher provides host switch functionality for [Macaron](https://github.
 ## Getting Help
 
 - [API Reference](https://gowalker.org/github.com/go-macaron/switcher)
-- [Documentation](http://go-macaron.com/docs/middlewares/switcher)
+- [Documentation](https://go-macaron.com/middlewares/switcher)
 
 ## License
 
