@@ -1,4 +1,4 @@
-# switcher [![Build Status](https://travis-ci.org/go-macaron/switcher.svg?branch=master)](https://travis-ci.org/go-macaron/switcher) [![](http://gocover.io/_badge/github.com/go-macaron/switcher)](http://gocover.io/github.com/go-macaron/switcher)
+# switcher [![GitHub Workflow Status](https://img.shields.io/github/workflow/status/go-macaron/switcher/Go?logo=github&style=for-the-badge)](https://github.com/go-macaron/switcher/actions?query=workflow%3AGo)
 
 Module switcher provides host switch functionality for [Macaron](https://github.com/go-macaron/macaron).
 
