@@ -84,9 +84,6 @@ func Test_HostSwitcher(t *testing.T) {
 		Convey("Just test that Run() doesn't bomb", func() {
 			go hs.RunOnAddr(":4003")
 			go hs.Run()
-			// FIXME: make no data race
-			macaron.Env = macaron.PROD
-			go hs.RunOnAddr(":4010")
 		})
 	})
 
