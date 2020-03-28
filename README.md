@@ -1,4 +1,8 @@
-# switcher [![GitHub Workflow Status](https://img.shields.io/github/workflow/status/go-macaron/switcher/Go?logo=github&style=for-the-badge)](https://github.com/go-macaron/switcher/actions?query=workflow%3AGo)
+# switcher 
+
+[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/go-macaron/switcher/Go?logo=github&style=for-the-badge)](https://github.com/go-macaron/switcher/actions?query=workflow%3AGo)
+[![codecov](https://img.shields.io/codecov/c/github/go-macaron/switcher/master?logo=codecov&style=for-the-badge)](https://codecov.io/gh/go-macaron/switcher)
+[![Sourcegraph](https://img.shields.io/badge/view%20on-Sourcegraph-brightgreen.svg?style=for-the-badge&logo=sourcegraph)](https://sourcegraph.com/github.com/go-macaron/switcher)
 
 Module switcher provides host switch functionality for [Macaron](https://github.com/go-macaron/macaron).
 
